@@ -5,62 +5,65 @@ using UnityEngine.EventSystems;
 
 namespace Flashunity.Logs
 {
-	//, IPointerClickHandler
-	public class BLogItem : BItem
-	{
-		public RectTransform background;
-		public float minHeight = 14;
+    //, IPointerClickHandler
+    public class BLogItem : BItem
+    {
+        public RectTransform background;
+        public float minHeight = 14;
 
-		public LogItem LogItem {
-			set {
-				_logItem = value;
+        new public LogItem LogItem
+        {
+            set
+            {
+                _logItem = value;
 
-				textNumber.text = value.number.ToString ();
+                textNumber.text = value.number.ToString();
 
-				textLabel.text = value.label.colored;//.ToString ();
+                textLabel.text = value.label.colored;//.ToString ();
 
-				textReflection.text = value.reflection.colored;
+                textReflection.text = value.reflection.colored;
 
-				textDateTime.text = value.labelDateTime.ToString ();
+                textDateTime.text = value.labelDateTime.ToString();
 
-				toggle.isOn = value.pin;
+                toggle.isOn = value.pin;
 
-				updateHeight ();
-			}
-			get {
-				return _logItem;
-			}
-		}
+                updateHeight();
+            }
+            get
+            {
+                return _logItem;
+            }
+        }
 
-		public void updateHeight ()
-		{
-			//print ("transform.parent:" + transform.parent);
-			RectTransform rectTransform = GetComponent<RectTransform> ();
+        public void updateHeight()
+        {
+            //print ("transform.parent:" + transform.parent);
+            RectTransform rectTransform = GetComponent<RectTransform>();
 
-			var active = textLabel.gameObject.activeSelf;
+            var active = textLabel.gameObject.activeSelf;
 
-			textLabel.gameObject.SetActive (true);
-			textReflection.gameObject.SetActive (true);
+            textLabel.gameObject.SetActive(true);
+            textReflection.gameObject.SetActive(true);
 
-			float max = Mathf.Max (LayoutUtility.GetPreferredHeight (textLabel.rectTransform), LayoutUtility.GetPreferredHeight (textReflection.rectTransform), minHeight);
+            float max = Mathf.Max(LayoutUtility.GetPreferredHeight(textLabel.rectTransform), LayoutUtility.GetPreferredHeight(textReflection.rectTransform), minHeight);
 
-			rectTransform.sizeDelta = new Vector2 (rectTransform.sizeDelta.x, max);
+            rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, max);
 
-			textLabel.gameObject.SetActive (active);
-			textReflection.gameObject.SetActive (active);
-		}
+            textLabel.gameObject.SetActive(active);
+            textReflection.gameObject.SetActive(active);
+        }
 
-		void Update ()
-		{
-			Vector3[] v = new Vector3[4];
-			GetComponent<RectTransform> ().GetWorldCorners (v);
+        void Update()
+        {
+            Vector3[] v = new Vector3[4];
+            GetComponent<RectTransform>().GetWorldCorners(v);
 
-			float maxY = Mathf.Max (v [0].y, v [1].y, v [2].y, v [3].y);
-			float minY = Mathf.Min (v [0].y, v [1].y, v [2].y, v [3].y);
+            float maxY = Mathf.Max(v [0].y, v [1].y, v [2].y, v [3].y);
+            float minY = Mathf.Min(v [0].y, v [1].y, v [2].y, v [3].y);
 
-			SetLabelsActive (maxY >= 0 && minY <= Screen.height);
+            SetLabelsActive(maxY >= 0 && minY <= Screen.height);
 
-			/*
+            /*
 			if (maxY < 0 || minY > Screen.height) {
 
 				textDateTime.gameObject.SetActive (false);
@@ -74,46 +77,46 @@ namespace Flashunity.Logs
 				textNumber.gameObject.SetActive (true);
 			}
 			*/
-		}
+        }
 
-		void SetLabelsActive (bool value)
-		{
-			textNumber.gameObject.SetActive (value);
-			textDateTime.gameObject.SetActive (value);
-			textReflection.gameObject.SetActive (value);
-			textLabel.gameObject.SetActive (value);
-			toggle.gameObject.SetActive (value);
-			buttonCopy.gameObject.SetActive (value);
-			background.gameObject.SetActive (value);
+        void SetLabelsActive(bool value)
+        {
+            textNumber.gameObject.SetActive(value);
+            textDateTime.gameObject.SetActive(value);
+            textReflection.gameObject.SetActive(value);
+            textLabel.gameObject.SetActive(value);
+            toggle.gameObject.SetActive(value);
+            buttonCopy.gameObject.SetActive(value);
+            background.gameObject.SetActive(value);
 
-			//GetComponent<Image> ().gameObject.SetActive (value);
-		}
+            //GetComponent<Image> ().gameObject.SetActive (value);
+        }
 
-		void Awake ()
-		{
-			//	minHeight = (transform as RectTransform).sizeDelta.y;
-		}
+        void Awake()
+        {
+            //	minHeight = (transform as RectTransform).sizeDelta.y;
+        }
 
-		void LateUpdate ()
-		{
-			/*
+        void LateUpdate()
+        {
+            /*
 			if (autoMoveCanvasUp && (moveCanvas != null)) {
 				moveCanvas ();
 				moveCanvas = null;
 			}
 			*/
 			
-			/*
+            /*
 			if (needUpdateChildrenPositions) {
 				//	print ("LateUpdate");
 				UpdateChildrenPositions ();
 				needUpdateChildrenPositions = false;
 			}
 			*/
-		}
+        }
 
 
-		/*
+        /*
 		public void OnPointerClick (PointerEventData eventData)
 		{
 			//	EventSystem.
@@ -126,7 +129,7 @@ namespace Flashunity.Logs
 		}
 */
 
-		/*
+        /*
 		public void OnPointerClick ()
 		{
 			LogCanvas.instance.Add ("PointerClick");
@@ -134,5 +137,5 @@ namespace Flashunity.Logs
         */
         
 
-	}
+    }
 }

@@ -20,7 +20,7 @@ namespace Flashunity.Calc
 		{
 			//Log.Visible = true;
 			// Add several simple tests
-			//AddTests ();
+			AddTests ();
 
 			//	Log.Visible = true;
 
