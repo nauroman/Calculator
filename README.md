@@ -2,6 +2,6 @@
 
 **Reverse Polish Notation calculator**
 
-[flashunity.com/calc]
+http://flashunity.com/calc/
 
-[flashunity.com/calc]: <http://flashunity.com/calc/>
+![Screenshot](http://flashunity.com/assets/calc/1.png)
