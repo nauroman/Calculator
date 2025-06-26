@@ -2,4 +2,4 @@
 
 **Reverse Polish Notation calculator**
 
-![Calculator screenshot](assets/calc/1.png)
+![Calculator screenshot](https://nauroman.github.io/portfolio/assets/calc/1.png)
